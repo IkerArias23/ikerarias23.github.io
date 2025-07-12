@@ -3,78 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Para Ti</title>
+  <title>Nuestro Viaje</title>
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom, #dcefff, #f0f7ff);
+      background: linear-gradient(to bottom, #e0f0ff, #ffffff);
       color: #1f2e45;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 700px;
+      margin: auto;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro {
+      height: 100vh;
       display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      overflow-x: hidden;
       text-align: center;
+      background-color: #d6eaff;
     }
 
-    .container {
-      width: 90%;
-      max-width: 600px;
-      margin-top: 80px;
-      padding: 20px;
-      background-color: #ffffffcc;
-      border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-
-    h1 {
-      font-size: 2em;
+    .intro h1 {
+      font-size: 2.5em;
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.1em;
+    .start-btn {
+      font-size: 1.2em;
+      background: none;
+      border: 2px solid #1f2e45;
+      padding: 12px 30px;
+      border-radius: 8px;
+      color: #1f2e45;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .start-btn:hover {
+      background: #1f2e45;
+      color: white;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 12px;
       margin-top: 20px;
-      line-height: 1.5;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
 
     video {
       width: 100%;
-      max-height: 300px;
+      max-width: 700px;
       border-radius: 12px;
+      margin: 60px auto;
+      display: block;
     }
 
-    #audio-control {
-      display: none;
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 1em;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Para la persona más especial</h1>
-    <video controls poster="https://i.imgur.com/wvTBIjt.jpg">
-      <source src="https://www.youtube.com/embed/dQw4w9WgXcQ" type="video/mp4">
-      Tu navegador no soporta la reproducción de vídeo.
-    </video>
-    <p>
-      Gracias por estar en mi vida. Esto es solo un pequeño detalle para recordarte cuánto te valoro 💙
-    </p>
-  </div>
 
-  <audio id="bg-music" loop>
-    <source src="consentia_instrumental.mp3" type="audio/mpeg" />
-  </audio>
+<div class="intro">
+  <h1>Haz clic para empezar el viaje 💙</h1>
+  <button class="start-btn" onclick="startJourney()">Empezar</button>
+</div>
 
-  <script>
-    const audio = document.getElementById("bg-music");
-    document.body.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play();
+<audio id="bg-music" loop>
+  <source src="consentia_instrumental.mp3" type="audio/mpeg" />
+</audio>
+
+<section><p>Todo comenzó sin que lo imagináramos. Dos caminos que se cruzaron y crearon algo único.</p><img src="IMG_0290.JPG" /></section>
+<section><p>Desde nuestras primeras conversaciones hasta los silencios que también hablan, cada instante contigo ha sido especial.</p><img src="IMG_0612.JPG" /></section>
+<section><p>Gracias por tu risa, tu paciencia, tu forma de mirarme y de hacerme sentir en casa.</p><img src="IMG_2548.JPG" /></section>
+<section><p>Me haces reír incluso cuando no lo intento. Eres esa paz que no sabía que necesitaba.</p><img src="IMG_3142.JPG" /></section>
+<section><p>Me haces mejor. Me inspiras, me motivas, me completas.</p><img src="IMG_4794.JPG" /></section>
+<section><p>Y aunque no lo diga todo el tiempo, cada día contigo es un regalo.</p><img src="IMG_5209.JPG" /></section>
+<section><p>Quiero construir contigo un millón de recuerdos más.</p><img src="IMG_5216.JPG" /></section>
+<section><p>Porque cuando pienso en el futuro, tú estás en él.</p><img src="IMG_5384.JPG" /></section>
+<section><p>Este es solo el principio de un viaje eterno.</p><img src="IMG_5995.JPG" /></section>
+<section><p>Gracias por existir en mi vida. Por ser tú.</p><img src="IMG_6733.JPG" /></section>
+
+<section id="video">
+  <h2>Este vídeo es para ti 🎥</h2>
+  <video controls>
+    <source src="https://www.youtube.com/embed/dQw4w9WgXcQ" type="video/mp4" />
+    Tu navegador no soporta vídeo.
+  </video>
+</section>
+
+<footer>
+  Con todo mi amor 💙
+</footer>
+
+<script>
+  const sections = document.querySelectorAll("section");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
       }
-    }, { once: true });
-  </script>
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  function startJourney() {
+    document.querySelector(".intro").style.display = "none";
+    window.scrollTo({ top: 0 });
+    document.getElementById("bg-music").play();
+  }
+</script>
+
 </body>
 </html>
