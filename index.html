@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Ti</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #dcefff, #f0f7ff);
+      color: #1f2e45;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      margin-top: 80px;
+      padding: 20px;
+      background-color: #ffffffcc;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+
+    video {
+      width: 100%;
+      max-height: 300px;
+      border-radius: 12px;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Para la persona más especial</h1>
+    <video controls poster="https://i.imgur.com/wvTBIjt.jpg">
+      <source src="https://www.youtube.com/embed/dQw4w9WgXcQ" type="video/mp4">
+      Tu navegador no soporta la reproducción de vídeo.
+    </video>
+    <p>
+      Gracias por estar en mi vida. Esto es solo un pequeño detalle para recordarte cuánto te valoro 💙
+    </p>
+  </div>
+  <audio autoplay loop>
+    <source src="consentia_instrumental.mp3" type="audio/mpeg" />
+  </audio>
+</body>
+</html>
